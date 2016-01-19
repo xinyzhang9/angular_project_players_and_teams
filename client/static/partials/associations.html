@@ -20,8 +20,8 @@
 				<th>Actions</th>
 			</tr>
 			<tr ng-repeat = "association in associations | filter:filter | orderBy:'name'">
-				<td>{{association.player}}</td>
-				<td >{{association.team}}</td>
+				<td ng-bind = 'association.player.name'></td>
+				<td ng-bind = 'association.team.name'></td>
 				<td><button ng-click = 'clearAssociation(association)' class = 'btn btn-danger'>Clear Assignment</button></td>
 			</tr>
 		</table>

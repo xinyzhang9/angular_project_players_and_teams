@@ -83,8 +83,12 @@
 				teams.splice(teams.indexOf(team),1);
 			}
 			factory.createAssociation = function(team,player){
-				var association = {player:player,team:team};
+				//retrieve an object from a string
+				playerObj = JSON.parse(player);
+				teamObj = JSON.parse(team);
+				var association = {player:playerObj,team:teamObj};
 				associations.push(association);
+				console.log(associations);
 				association = {};
 			}
 			factory.getAssociations = function(callback){
@@ -132,11 +136,13 @@
 
 		myApp.controller('associationsController',function($scope,playerFactory,teamFactory){
 			$scope.associations = [];
+			console.log($scope.associations);
 			$scope.players = [];
 			$scope.teams = [];
 
 			teamFactory.getAssociations(function(data){
 				$scope.associations = data;
+				console.log(data);
 			})
 
 			teamFactory.getTeams(function(data){
