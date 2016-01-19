@@ -1,0 +1,28 @@
+<div ng-controller='associationsController'>
+	<form>
+		<fieldset>
+			<legend>Associations Controller</legend>
+		<select name="name" ng-model = 'asPlayer'>
+			<option ng-repeat = "player in players | filter:filter | orderBy:'name'" value='{{player}}'>{{player.name}}</option>
+		</select>
+		<select name="team" ng-model = 'asTeam'>
+			<option ng-repeat = "team in teams | filter:filter | orderBy:'name'" value='{{team}}'>{{team.name}}</option>
+		</select>
+		<input type="button" value = "Assign player to team" ng-click = 'createAssociation(asTeam,asPlayer)' class = 'btn btn-success'>
+		</fieldset>
+	</form>
+	filter:
+		<input type="text" ng-model = "filter">
+		<table class = 'table'>
+			<tr>
+				<th>Name</th>
+				<th>Team</th>
+				<th>Actions</th>
+			</tr>
+			<tr ng-repeat = "association in associations | filter:filter | orderBy:'name'">
+				<td>{{association.player}}</td>
+				<td >{{association.team}}</td>
+				<td><button ng-click = 'clearAssociation(association)' class = 'btn btn-danger'>Clear Assignment</button></td>
+			</tr>
+		</table>
+</div>

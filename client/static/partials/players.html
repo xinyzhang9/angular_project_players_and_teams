@@ -1,0 +1,22 @@
+<div ng-controller='playersController'>
+	<form>
+		<fieldset>
+			<legend>Players Controller</legend>
+		<label for="name">name </label>
+		<input type="text" ng-model = 'newPlayer.name'><br>
+		<input type="button" value = "Add Player" ng-click = 'addPlayer()' class = 'btn btn-success'>
+		</fieldset>
+	</form>
+	filter:
+		<input type="text" ng-model = "filter">
+		<table class = 'table'>
+			<tr>
+				<th>Name</th>
+				<th>Actions</th>
+			</tr>
+			<tr ng-repeat = "player in players | filter:filter | orderBy:'name'">
+				<td >{{player.name}}</td>
+				<td><button ng-click = 'removePlayer(player)' class = 'btn btn-danger'>Remove Player</button></td>
+			</tr>
+		</table>
+</div>
